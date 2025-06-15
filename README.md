@@ -309,7 +309,7 @@
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
         
-        /* 古诗区域 - 移动端优化 */
+        /* 古诗区域 - 移动端优化（重点优化） */
         .poem-section {
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23f5f5f5" d="M50,0C22.4,0,0,22.4,0,50s22.4,50,50,50s50-22.4,50-50S77.6,0,50,0z M50,92C27.9,92,10,74.1,10,52S27.9,12,50,12 s40,17.9,40,40S72.1,92,50,92z"/></svg>');
             background-size: 40px;
@@ -368,11 +368,20 @@
         
         .poem-text {
             font-family: 'Ma Shan Zheng', '楷体', 'STKaiti', serif;
-            font-size: clamp(1.2rem, 4vw, 1.6rem);
-            line-height: 1.7;
             color: var(--text-dark);
             margin-bottom: 15px;
             letter-spacing: 1px;
+        }
+        
+        .poem-line {
+            display: block;
+            font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+            line-height: 1.8;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+            margin: 8px 0;
         }
         
         .poem-meaning {
@@ -519,7 +528,7 @@
                 padding: 18px 12px;
             }
             
-            .poem-text {
+            .poem-line {
                 font-size: 1.3rem;
                 line-height: 1.6;
             }
@@ -553,6 +562,13 @@
             .time-tag {
                 font-size: 0.7rem;
                 padding: 3px 8px;
+            }
+            
+            .poem-line {
+                font-size: 1.2rem;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: clip;
             }
         }
         
@@ -684,15 +700,15 @@
             <div class="cd-badge">争当"光盘小明星"</div>
         </div>
         
-        <!-- 古诗区域 - 移动端优化 -->
+        <!-- 古诗区域 - 移动端优化（重点优化） -->
         <div class="poem-section">
             <h2 class="poem-title">悯农</h2>
             <div class="poem-author">作者 · 李绅</div>
             
             <div class="poem-content">
                 <div class="poem-text">
-                    锄禾日当午，汗滴禾下土。<br>
-                    谁知盘中餐，粒粒皆辛苦。
+                    <span class="poem-line">锄禾日当午，汗滴禾下土。</span>
+                    <span class="poem-line">谁知盘中餐，粒粒皆辛苦。</span>
                 </div>
                 <div class="poem-meaning">
                     古诗通过描绘农民烈日下劳作的艰辛，呼吁珍惜粮食、尊重劳动，每一粒粮食都来之不易，我们一定不能浪费粮食。
