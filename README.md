@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>中三班美食播报 - 郭昊鑫</title>
     <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
     <style>
@@ -25,31 +26,39 @@
             box-sizing: border-box;
         }
         
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+        
         body {
             background: linear-gradient(135deg, #fff9c4 0%, #ffecb3 100%);
-            min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             font-family: 'Comic Sans MS', 'Ma Shan Zheng', '微软雅黑', sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
+            min-height: 100%;
+            position: relative;
         }
         
         .container {
             max-width: 900px;
             width: 100%;
             background: var(--white);
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(255, 152, 0, 0.2);
-            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(255, 152, 0, 0.2);
+            overflow: visible;
+            position: relative;
+            margin: 0 auto;
         }
         
-        /* 顶部横幅 - 已修复副标题显示问题 */
+        /* 顶部横幅 - 移动端优化 */
         .header {
             background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 25px 30px 45px; /* 增加底部内边距确保副标题完全显示 */
+            padding: 20px 15px 35px;
             text-align: center;
             position: relative;
             overflow: visible;
@@ -69,34 +78,35 @@
         
         .header h1 {
             color: var(--white);
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-size: clamp(1.5rem, 6vw, 2.2rem);
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
             letter-spacing: 1px;
             position: relative;
             z-index: 2;
             margin-bottom: 10px;
             line-height: 1.3;
+            padding: 0 10px;
         }
         
         .header .subtitle {
             color: #fffde7;
-            font-size: clamp(1.1rem, 3.2vw, 1.5rem); /* 增大字体大小 */
+            font-size: clamp(1rem, 4vw, 1.4rem);
             position: relative;
             z-index: 2;
             display: block;
-            padding: 0 15px;
-            line-height: 1.6; /* 增加行高确保文字完整显示 */
+            padding: 0 10px;
+            line-height: 1.6;
             margin-top: 5px;
         }
         
-        /* 播报员卡片 */
+        /* 播报员卡片 - 移动端优化 */
         .reporter-card {
             background: var(--white);
-            width: 90%;
+            width: 92%;
             max-width: 600px;
-            margin: -35px auto 25px; /* 减少负边距避免覆盖副标题 */
-            padding: 20px;
-            border-radius: 20px;
+            margin: -25px auto 20px;
+            padding: 18px;
+            border-radius: 18px;
             box-shadow: var(--shadow);
             text-align: center;
             position: relative;
@@ -104,11 +114,11 @@
         }
         
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 85px;
+            height: 85px;
             border-radius: 50%;
             background: #ffecb3;
-            margin: 0 auto 15px;
+            margin: 0 auto 12px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -119,33 +129,34 @@
         
         .avatar::before {
             content: "🍳";
-            font-size: 3rem;
+            font-size: 2.6rem;
             animation: bounce 2s ease-in-out infinite;
         }
         
         .reporter-card h2 {
             color: var(--primary-dark);
-            font-size: clamp(1.8rem, 4vw, 2.2rem);
-            margin-bottom: 8px;
+            font-size: clamp(1.6rem, 5vw, 2rem);
+            margin-bottom: 6px;
         }
         
         .reporter-card p {
             color: var(--text-dark);
-            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
             line-height: 1.5;
         }
         
-        /* 美食时间线 */
+        /* 美食时间线 - 移动端优化 */
         .timeline {
-            padding: 0 25px 25px;
+            padding: 0 15px 20px;
+            overflow: visible;
         }
         
         .meal-card {
             background: var(--light-bg);
             border-left: 5px solid var(--accent);
             border-radius: 0 15px 15px 0;
-            padding: 18px 20px;
-            margin-bottom: 25px;
+            padding: 16px;
+            margin-bottom: 20px;
             position: relative;
             transition: all 0.3s ease;
         }
@@ -153,36 +164,36 @@
         .meal-card:hover {
             transform: translateY(-5px);
             background: #fff3cc;
-            box-shadow: 0 12px 25px rgba(255, 152, 0, 0.12);
+            box-shadow: 0 10px 20px rgba(255, 152, 0, 0.12);
         }
         
         .time-tag {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 12px;
+            right: 12px;
             background: var(--accent);
             color: var(--white);
-            padding: 4px 12px;
-            border-radius: 20px;
+            padding: 4px 10px;
+            border-radius: 18px;
             font-weight: bold;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
         }
         
         .meal-card h3 {
             color: var(--primary-dark);
-            font-size: clamp(1.5rem, 3.5vw, 1.8rem);
-            margin-bottom: 12px;
+            font-size: clamp(1.3rem, 4vw, 1.6rem);
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding-right: 90px;
+            gap: 8px;
+            padding-right: 80px;
         }
         
         .meal-card h3::before {
             content: "";
             display: inline-block;
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
             background-repeat: no-repeat;
             background-size: contain;
         }
@@ -205,49 +216,49 @@
         
         .food-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
             margin-top: 10px;
         }
         
         .food-item {
             background: var(--white);
-            border-radius: 12px;
-            padding: 12px;
+            border-radius: 10px;
+            padding: 10px;
             text-align: center;
-            box-shadow: 0 3px 10px rgba(255, 152, 0, 0.1);
+            box-shadow: 0 3px 8px rgba(255, 152, 0, 0.1);
             transition: all 0.3s ease;
         }
         
         .food-item:hover {
-            box-shadow: 0 7px 15px rgba(255, 152, 0, 0.2);
+            box-shadow: 0 5px 12px rgba(255, 152, 0, 0.2);
             transform: translateY(-3px);
         }
         
         .food-icon {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
+            font-size: 2rem;
+            margin-bottom: 6px;
             display: inline-block;
         }
         
         .food-name {
             color: var(--text-dark);
             font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 1rem;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
         }
         
         .food-desc {
             color: var(--text-light);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
         
-        /* 光盘行动 */
+        /* 光盘行动 - 移动端优化 */
         .cd-action {
             background: linear-gradient(90deg, var(--success) 0%, var(--success-light) 100%);
-            padding: 20px 25px;
-            margin: 20px 25px;
-            border-radius: 18px;
+            padding: 18px 20px;
+            margin: 15px;
+            border-radius: 15px;
             color: var(--white);
             text-align: center;
             position: relative;
@@ -265,8 +276,8 @@
         }
         
         .cd-action h3 {
-            font-size: clamp(1.6rem, 3.5vw, 2rem);
-            margin-bottom: 15px;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            margin-bottom: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -275,13 +286,13 @@
         
         .cd-action h3::after {
             content: "🌟";
-            margin-left: 10px;
+            margin-left: 8px;
         }
         
         .cd-action p {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            line-height: 1.7;
-            margin-bottom: 12px;
+            font-size: clamp(0.95rem, 3vw, 1.1rem);
+            line-height: 1.6;
+            margin-bottom: 10px;
             position: relative;
         }
         
@@ -289,28 +300,28 @@
             display: inline-block;
             background: #ffeb3b;
             color: var(--success);
-            padding: 8px 22px;
-            border-radius: 30px;
+            padding: 7px 18px;
+            border-radius: 25px;
             font-weight: bold;
-            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-            margin-top: 8px;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-top: 6px;
             position: relative;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
         
-        /* 古诗区域 */
+        /* 古诗区域 - 移动端优化 */
         .poem-section {
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23f5f5f5" d="M50,0C22.4,0,0,22.4,0,50s22.4,50,50,50s50-22.4,50-50S77.6,0,50,0z M50,92C27.9,92,10,74.1,10,52S27.9,12,50,12 s40,17.9,40,40S72.1,92,50,92z"/></svg>');
             background-size: 40px;
-            padding: 30px 20px;
+            padding: 25px 15px;
             text-align: center;
             border-top: 3px dashed #ffccbc;
         }
         
         .poem-title {
             color: var(--text-dark);
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 15px;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            margin-bottom: 12px;
             position: relative;
             display: inline-block;
             font-family: 'Ma Shan Zheng', cursive;
@@ -319,27 +330,27 @@
         .poem-title::after {
             content: "";
             position: absolute;
-            bottom: -8px;
+            bottom: -6px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
+            width: 50px;
             height: 3px;
             background: var(--primary);
         }
         
         .poem-author {
             color: var(--text-light);
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            margin-bottom: 20px;
+            font-size: clamp(0.95rem, 3vw, 1.2rem);
+            margin-bottom: 15px;
         }
         
         .poem-content {
             max-width: 600px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.92);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             position: relative;
             backdrop-filter: blur(2px);
         }
@@ -347,49 +358,49 @@
         .poem-content::before {
             content: """" "";
             position: absolute;
-            top: -15px;
+            top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ff9800" d="M18.8 11.5c-1.2-1.9-3.3-3.2-5.6-3.5.4-1.2.7-2.5.7-3.8 0-1.2-.2-2.4-.7-3.5-.5.8-.7 1.7-.7 2.6 0 1.2.3 2.4.8 3.5-1.1.3-2 .9-2.7 1.7-1.7-1.9-4.4-2.8-7.1-2.3-1.4.3-2.7 1-3.6 2.1-.9 1.1-1.4 2.4-1.4 3.8 0 3.3 2.7 6 6 6h12c1.1 0 2.2-.4 3-1.2.8-.8 1.2-1.9 1.2-3 0-1.5-.7-2.8-1.9-3.6zM6 12c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm16 4H10c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm-2 6h-8v-2h8v2z"/></svg>') center/contain no-repeat;
         }
         
         .poem-text {
             font-family: 'Ma Shan Zheng', '楷体', 'STKaiti', serif;
-            font-size: clamp(1.4rem, 3.5vw, 1.8rem);
-            line-height: 1.8;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            line-height: 1.7;
             color: var(--text-dark);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             letter-spacing: 1px;
         }
         
         .poem-meaning {
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            font-size: clamp(0.9rem, 3vw, 1rem);
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.5;
             font-style: italic;
             border-top: 1px dashed #bcaaa4;
-            padding-top: 15px;
+            padding-top: 12px;
         }
         
-        /* 页脚 */
+        /* 页脚 - 移动端优化 */
         .footer {
             background: var(--text-dark);
             color: #ffccbc;
             text-align: center;
-            padding: 25px 20px;
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            padding: 20px 15px;
+            font-size: clamp(0.9rem, 3vw, 1rem);
         }
         
         .closing {
-            font-size: clamp(1.4rem, 3.5vw, 1.6rem);
-            margin-bottom: 12px;
+            font-size: clamp(1.3rem, 4vw, 1.5rem);
+            margin-bottom: 10px;
             color: var(--white);
             font-weight: bold;
         }
         
-        /* 动画 */
+        /* 动画优化 */
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -398,12 +409,12 @@
         
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
         
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-6px); }
         }
         
         .food-icon {
@@ -419,89 +430,168 @@
             animation: pulse 2s ease-in-out infinite;
         }
         
-        /* 响应式设计 */
+        /* 响应式设计 - 重点优化移动端 */
         @media (max-width: 768px) {
             .reporter-card { 
-                margin-top: -30px; 
+                margin-top: -25px; 
                 padding: 15px;
             }
             
             .avatar {
-                width: 85px;
-                height: 85px;
+                width: 80px;
+                height: 80px;
             }
             
             .timeline {
-                padding: 0 15px 15px;
+                padding: 0 12px 15px;
             }
             
             .meal-card {
-                padding: 15px;
+                padding: 14px;
+                margin-bottom: 18px;
             }
             
             .cd-action {
-                margin: 15px;
-                padding: 18px;
+                margin: 12px;
+                padding: 16px;
             }
             
             .food-list {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                gap: 8px;
             }
         }
         
         @media (max-width: 480px) {
             body {
                 padding: 10px;
+                align-items: flex-start;
             }
             
             .container {
-                border-radius: 20px;
+                border-radius: 18px;
             }
             
             .header {
-                padding: 20px 15px 35px; /* 小屏幕下增加底部空间 */
+                padding: 18px 12px 30px;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+                line-height: 1.4;
             }
             
             .header .subtitle {
-                font-size: 1.2rem; /* 移动端增大字体 */
-                line-height: 1.7; /* 增加行高 */
+                font-size: 1.1rem;
+                line-height: 1.6;
             }
             
             .reporter-card {
-                margin-top: -25px; /* 移动端进一步减少负边距 */
+                margin-top: -20px;
+                width: 94%;
             }
             
             .food-list {
                 grid-template-columns: 1fr 1fr;
-                gap: 10px;
+            }
+            
+            .food-item {
+                padding: 8px;
+            }
+            
+            .food-icon {
+                font-size: 1.8rem;
+            }
+            
+            .food-name {
+                font-size: 0.9rem;
+            }
+            
+            .food-desc {
+                font-size: 0.75rem;
+            }
+            
+            .poem-section {
+                padding: 20px 10px;
             }
             
             .poem-content {
-                padding: 20px 15px;
+                padding: 18px 12px;
+            }
+            
+            .poem-text {
+                font-size: 1.3rem;
+                line-height: 1.6;
             }
             
             .footer {
-                padding: 20px 15px;
+                padding: 18px 12px;
             }
+        }
+        
+        @media (max-width: 360px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .header .subtitle {
+                font-size: 1rem;
+            }
+            
+            .reporter-card h2 {
+                font-size: 1.4rem;
+            }
+            
+            .food-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .meal-card h3 {
+                padding-right: 70px;
+            }
+            
+            .time-tag {
+                font-size: 0.7rem;
+                padding: 3px 8px;
+            }
+        }
+        
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #ffecb3;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #ffb300;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff9800;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- 顶部横幅 - 已修复副标题显示问题 -->
+        <!-- 顶部横幅 - 移动端优化 -->
         <div class="header">
             <h1>🍽️ 双柏县西城幼儿园美食播报</h1>
             <div class="subtitle">营养均衡 · 健康成长 · 光盘行动</div>
         </div>
         
-        <!-- 小播报员卡片 -->
+        <!-- 小播报员卡片 - 移动端优化 -->
         <div class="reporter-card">
             <div class="avatar"></div>
             <h2>郭昊鑫</h2>
             <p>中三班小小美食播报员 · 2025年6月18日</p>
         </div>
         
-        <!-- 美食时间线 -->
+        <!-- 美食时间线 - 移动端优化 -->
         <div class="timeline">
             <!-- 早餐 -->
             <div class="meal-card breakfast">
@@ -586,7 +676,7 @@
             </div>
         </div>
         
-        <!-- 光盘行动 -->
+        <!-- 光盘行动 - 移动端优化 -->
         <div class="cd-action">
             <h3>老师的话要牢记</h3>
             <p>吃饭要乖乖坐好，细嚼慢咽不挑食</p>
@@ -594,7 +684,7 @@
             <div class="cd-badge">争当"光盘小明星"</div>
         </div>
         
-        <!-- 古诗区域 -->
+        <!-- 古诗区域 - 移动端优化 -->
         <div class="poem-section">
             <h2 class="poem-title">悯农</h2>
             <div class="poem-author">作者 · 李绅</div>
@@ -610,7 +700,7 @@
             </div>
         </div>
         
-        <!-- 页脚 -->
+        <!-- 页脚 - 移动端优化 -->
         <div class="footer">
             <div class="closing">谢谢大家！我的美食播报结束</div>
             <p>西城幼儿园中三班 · 让美食伴随健康成长</p>
@@ -622,6 +712,11 @@
         // 添加食物图标动画
         document.querySelectorAll('.food-icon').forEach((icon, index) => {
             icon.classList.add(`delay-${index % 4}`);
+        });
+        
+        // 确保页面加载后滚动到顶部
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
         });
     </script>
 </body>
